@@ -17,6 +17,10 @@
       "description": "Endpoint for book in the system"
     },
     {
+      "name": "Loan",
+      "description": "Endpoint for loan in the system"
+    },
+    {
       "name": "Member",
       "description": "Endpoint for member in the system"
     }
@@ -43,41 +47,19 @@
         "summary": "Create book",
           "parameters": [
           {
-            "name": "pengawas",
+            "name": "book",
             "in": "body",
-            "description": "Login Pengawas"
+            "description": "Atribute Books"
           }
         ],
         "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "Success Login"
+            "description": "Success create book"
         }
       }
     }
   },
-  "/start-instance": {
-      "post": {
-        "tags": ["Instance"],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Respon when success"
-        }
-    }
-    }
-  },
-   "/stop-instance": {
-      "post": {
-        "tags": ["Instance"],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Respon when success"
-        }
-    }
-  }
-},
   "definitions": {
     "Pengawas": {
       "required": ["id_pengawas", "nip", "nama_pengawas", "email", "password"],

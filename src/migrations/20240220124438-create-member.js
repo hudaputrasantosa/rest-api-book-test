@@ -3,13 +3,11 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Members", {
-      code: {
+      id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.STRING,
-      },
-      code: {
-        type: Sequelize.STRING,
+        autoIncrement: true,
       },
       name: {
         type: Sequelize.STRING,
@@ -22,6 +20,10 @@ module.exports = {
       },
       phone: {
         type: Sequelize.STRING,
+      },
+      isPenalty: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,

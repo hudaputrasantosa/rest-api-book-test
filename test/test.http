@@ -1,0 +1,21 @@
+# GET http://localhost:8080/api/books
+
+# GET http://localhost:8080/api/members
+
+# POST http://localhost:8080/api/members/create HTTP/1.1
+# content-type: application/json
+
+# {
+# 	"name": "Ibnu",
+# 	"sex": "Male",
+# 	"address": "Batang",
+# 	"phone": "085144765436"
+# }
+
+POST http://localhost:8080/api/loans/create HTTP/1.1
+content-type: application/json
+
+{
+	"id_member": 1,
+	"id_book": 2,
+}

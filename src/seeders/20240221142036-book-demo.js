@@ -5,7 +5,6 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     return queryInterface.bulkInsert("books", [
       {
-        code: "BK-23",
         title: "Bulan Ksatria",
         author: "Doe",
         year: "2018",
@@ -14,7 +13,6 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        code: "HP-12",
         title: "Harry Potter",
         author: "John",
         year: "2019",
@@ -23,7 +21,6 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        code: "BP-13",
         title: "Bulan Purnama",
         author: "Donny",
         year: "2010",
@@ -32,7 +29,6 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        code: "BS-05",
         title: "Bicara Itu ada Seninya",
         author: "Oh Su Hyang",
         year: "2008",
@@ -41,7 +37,6 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        code: "BL-02",
         title: "Bicara Lembut",
         author: "Dodi",
         year: "2020",

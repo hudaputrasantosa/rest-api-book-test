@@ -1,8 +1,11 @@
-const model = require("../models");
+const Book = require("../models").Book;
 
 const getBooks = async (req, res) => {
   try {
-    let books = await model.Book.findAll();
+    let books = await Book.findAll({
+      include: [],
+      order: [["createdAt", "DESC"]],
+    });
     if (!books) {
       res.status(404).json({ status: "Not Found", message: "Books not found" });
     }
@@ -22,10 +25,10 @@ const getBooks = async (req, res) => {
 const createBook = async (req, res) => {
   try {
     await Book.create({
-      code: req.body.code,
       title: req.body.title,
       author: req.body.author,
       year: req.body.year,
+      stock: req.body.stock,
     });
 
     res.status(200).json({
