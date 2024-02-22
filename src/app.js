@@ -3,8 +3,10 @@ const router = express.Router();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const db = require("./models");
-
+const logger = require("./config/logger");
+const routes = require("./routes");
 const app = express();
+
 // let corsOption = {
 //   origin: "http://localhost:8080",
 // };
@@ -24,6 +26,8 @@ app.get("/", (req, res) => {
   });
 });
 
+app.use("/api", routes);
+
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
   const errorMessage = err.message || "Something went Wrong!";
@@ -35,9 +39,16 @@ app.use((err, req, res, next) => {
   });
 });
 
-db.sequelize.sync().then((res) => {
-  const PORT = process.env.PORT || 8080;
-  app.listen(PORT, () => {
-    console.log("server running.. http://localhost:8080");
+db.sequelize
+  .sync()
+  .then(() => {
+    logger.info("sync db");
+  })
+  .catch((err) => {
+    logger.error(`failed sync database, get error ${err}`);
   });
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log("server running.. http://localhost:8080");
 });

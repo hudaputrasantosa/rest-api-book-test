@@ -1,0 +1,123 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Books App API",
+    "description": "Books App Project Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Book",
+      "description": "Endpoint for book in the system"
+    },
+    {
+      "name": "Member",
+      "description": "Endpoint for member in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/books": {
+      "get": {
+        "tags": ["Book"],
+        "summary": "Get all data book",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Get Data Books"
+        }
+      }
+    }
+  },
+   "/books/create": {
+      "post": {
+        "tags": ["Book"],
+        "summary": "Create book",
+          "parameters": [
+          {
+            "name": "pengawas",
+            "in": "body",
+            "description": "Login Pengawas"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success Login"
+        }
+      }
+    }
+  },
+  "/start-instance": {
+      "post": {
+        "tags": ["Instance"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Respon when success"
+        }
+    }
+    }
+  },
+   "/stop-instance": {
+      "post": {
+        "tags": ["Instance"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Respon when success"
+        }
+    }
+  }
+},
+  "definitions": {
+    "Pengawas": {
+      "required": ["id_pengawas", "nip", "nama_pengawas", "email", "password"],
+      "properties": {
+        "id_pengawas": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "nip": {
+          "type": "integer"
+        },
+        "nama_pengawas": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+       "password": {
+          "type": "string"
+        }
+      }  
+  },
+   "Report": {
+      "required": ["id_report", "tanggal", "keterangan", "id_pengawas"],
+      "properties": {
+        "id_report": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "tanggal": {
+          "type": "timestamp"
+        },
+        "keterangan": {
+          "type": "string"
+        },
+        "id_pengawas": {
+          "type": "integer"
+        }
+      }  
+  }
+}
+}
+}
