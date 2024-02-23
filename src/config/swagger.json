@@ -49,7 +49,7 @@
           {
             "name": "book",
             "in": "body",
-            "description": "Atribute Books"
+            "description": "body atribute : title, author, year, stock"
           }
         ],
         "produces": ["application/json"],
@@ -60,42 +60,52 @@
       }
     }
   },
-  "definitions": {
-    "Pengawas": {
-      "required": ["id_pengawas", "nip", "nama_pengawas", "email", "password"],
-      "properties": {
-        "id_pengawas": {
-          "type": "integer",
-          "uniqueItems": true
-        },
-        "nip": {
-          "type": "integer"
-        },
-        "nama_pengawas": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-       "password": {
-          "type": "string"
+      "/loans": {
+      "get": {
+        "tags": ["Loan"],
+        "summary": "Get all data ongoing loans",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Get Data Loans"
         }
-      }  
+      }
+    }
   },
-   "Report": {
-      "required": ["id_report", "tanggal", "keterangan", "id_pengawas"],
+     "/loans/create": {
+      "post": {
+        "tags": ["Loan"],
+        "summary": "Create loan book",
+          "parameters": [
+          {
+            "name": "loan",
+            "in": "body",
+            "description": "body atribute : id_member, id_book"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success create loan book"
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "Book": {
+      "required": ["title", "author", "year", "stock"],
       "properties": {
-        "id_report": {
-          "type": "integer",
-          "uniqueItems": true
-        },
-        "tanggal": {
-          "type": "timestamp"
-        },
-        "keterangan": {
+        "title": {
           "type": "string"
         },
-        "id_pengawas": {
+        "author": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        },
+        "stock": {
           "type": "integer"
         }
       }  

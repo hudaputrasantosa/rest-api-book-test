@@ -2,6 +2,34 @@ const logger = require("../config/logger");
 
 const Loan = require("../models").Loan;
 const Member = require("../models").Member;
+const Book = require("../models").Book;
+
+const getLoans = async (req, res) => {
+  try {
+    const loans = await Loan.findAndCountAll({
+      where: {
+        status: "ongoing",
+      },
+    });
+    if (loans.count != 0) {
+      res.status(200).json({
+        status: "OK",
+        message: `success find loans ongoing}`,
+        data: loans,
+      });
+    } else {
+      res.status(404).json({
+        status: "Notfound",
+        message: `data tidak ditemukan/ belum ada`,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      status: "Error",
+      message: `Error at ${error}`,
+    });
+  }
+};
 
 const createLoan = async (req, res) => {
   try {
@@ -15,8 +43,6 @@ const createLoan = async (req, res) => {
     if (member) {
       checkIsPenalty = member.isPenalty;
     }
-
-    // console.log(checkisPenalty);
 
     if (checkIsPenalty) {
       res.status(200).json({
@@ -32,6 +58,12 @@ const createLoan = async (req, res) => {
       });
 
       if (loanMember.count <= 1) {
+        const bookLoan = await Book.findOne({
+          where: {
+            id: req.body.id_book,
+          },
+        });
+
         await Loan.create({
           id_member: req.body.id_member,
           id_book: req.body.id_book,
@@ -40,9 +72,12 @@ const createLoan = async (req, res) => {
           status: "ongoing",
         });
 
+        await bookLoan.update({ stock: bookLoan.stock - 1 });
+
         res.status(201).json({
           status: "OK",
           message: "Success loan book",
+          data: bookLoan,
         });
       } else {
         res.status(200).json({
@@ -65,7 +100,7 @@ const returnBook = async (req, res) => {
     const currentDate = new Date();
     let penaltyMessage = "";
 
-    isMemberLoan = await Loan.findOne({
+    const isMemberLoan = await Loan.findOne({
       where: {
         id_member: req.body.id_member,
         id_book: req.body.id_book,
@@ -91,13 +126,15 @@ const returnBook = async (req, res) => {
         }
       );
 
-      penaltyMessage = "Dan anda terkena penalti/hukuman ";
+      penaltyMessage = "Dan anda terkena penalti/hukuman";
     }
 
     await isMemberLoan.update({
       return_date: currentDate,
       status: "done",
+      stock,
     });
+
     res.status(200).json({
       status: "OK",
       message: `Selesai mengembalikan buku ${penaltyMessage}`,
@@ -110,4 +147,4 @@ const returnBook = async (req, res) => {
   }
 };
 
-module.exports = { createLoan, returnBook };
+module.exports = { createLoan, returnBook, getLoans };

@@ -1,8 +1,12 @@
 const express = require("express");
-const { createLoan, returnBook } = require("../controllers/loanController");
+const {
+  createLoan,
+  returnBook,
+  getLoans,
+} = require("../controllers/loanController");
 const router = express.Router();
 
-// router.get("/", getBooks);
+router.get("/", getLoans);
 router.post("/create", createLoan);
 router.post("/return", returnBook);
 
