@@ -1,5 +1,5 @@
 # REST API Peminjaman Buku
-![Logo](https://raw.githubusercontent.com/hudaputrasantosa/sewa-mobil-app/main/public/assets/img/usecase.png)
+![Logo](https://raw.githubusercontent.com/hudaputrasantosa/rest-api-book-test/master/assets/erd_book.png)
 
 ## ⚡ Deskripsi
 REST API Peminjaman Buku merupakan aplikasi backend yang menyediakan endpoint dengan tujuan untuk memberikan komunikasi kepada frontend developer untuk melakukan konsumsi API pada sisi klien sistem peminjaman buku.
@@ -9,7 +9,20 @@ REST API Peminjaman Buku merupakan aplikasi backend yang menyediakan endpoint de
 - Loan
 - Book
 
+## ✨ Screenshoots
+![Logo](https://raw.githubusercontent.com/hudaputrasantosa/rest-api-book-test/master/assets/docs_api.png)
+
 ## ✨ Endpoints
+| Method   | Url/Endpoint   | Action   |
+| ------------- | ------------- | -------- |
+| GET      | /books       | Get all data book |
+| POST      | /books/create | Create book |
+| GET      | /loans       | Get all data loans  |
+| POST      | /loans/create      | Create loan |
+| POST      | /loans/return     | Create return book  |
+| GET      | /members       | Get all data members  |
+| GET      | /members/getBookByMember      | Get all data members on loan |
+| POST      | /members/create     | Create member  |
 
 
 ## ✅ Requirement and tools
