@@ -9,7 +9,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "localhost:8080",
+  "host": "http://localhost:8080",
   "basePath": "/api",
   "tags": [
     {
@@ -87,6 +87,25 @@
         "responses": {
           "200": {
             "description": "Success create loan book"
+        }
+      }
+    }
+  },
+     "/loans/return": {
+      "post": {
+        "tags": ["Loan"],
+        "summary": "Return loan book",
+          "parameters": [
+          {
+            "name": "loan",
+            "in": "body",
+            "description": "body atribute : id_member, id_book"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success return loan book"
         }
       }
     }

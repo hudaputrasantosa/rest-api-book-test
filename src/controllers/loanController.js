@@ -98,7 +98,7 @@ const createLoan = async (req, res) => {
 const returnBook = async (req, res) => {
   try {
     const currentDate = new Date();
-    let penaltyMessage = "";
+    let penaltyMessage = "sebelum tanggal deadline";
 
     const isMemberLoan = await Loan.findOne({
       where: {
@@ -132,8 +132,14 @@ const returnBook = async (req, res) => {
     await isMemberLoan.update({
       return_date: currentDate,
       status: "done",
-      stock,
     });
+
+    const loanBook = await Book.findOne({
+      where: {
+        id: req.body.id_book,
+      },
+    });
+    await loanBook.update({ stock: loanBook.stock + 1 });
 
     res.status(200).json({
       status: "OK",
