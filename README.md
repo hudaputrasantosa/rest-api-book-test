@@ -1,17 +1,50 @@
-Entities
-Member
-Book
-Use Case
-Members can borrow books with conditions
- Members may not borrow more than 2 books
- Borrowed books are not borrowed by other members
- Member is currently not being penalized
-Member returns the book with conditions
- The returned book is a book that the member has borrowed
- If the book is returned after more than 7 days, the member will be subject to a penalty. Member with penalty cannot able to borrow the book for 3 days
-Check the book
- Shows all existing books and quantities
- Books that are being borrowed are not counted
-Member check
- Shows all existing members
- The number of books being borrowed by each member
+# REST API Peminjaman Buku
+![Logo](https://raw.githubusercontent.com/hudaputrasantosa/sewa-mobil-app/main/public/assets/img/usecase.png)
+
+## ⚡ Deskripsi
+REST API Peminjaman Buku merupakan aplikasi backend yang menyediakan endpoint dengan tujuan untuk memberikan komunikasi kepada frontend developer untuk melakukan konsumsi API pada sisi klien sistem peminjaman buku.
+
+## ✨ Entitas 
+- Member
+- Loan
+- Book
+
+## ✨ Endpoints
+
+
+## ✅ Requirement and tools
+ - NodeJS v16.16
+ - NPM v8.11
+ - DBMS MySQL
+ - Express
+ - Sequelize ORM
+ - Jest
+ - Winston Logger
+ - Swagger Documentation
+ - Exalidraw
+
+## 🔥 Install & running local dev
+Clone Repository
+
+```bash
+git clone https://github.com/hudaputrasantosa/rest-api-book-test.git
+cd rest-api-book-test
+```
+Installation from NPM
+```bash
+npm install
+```
+Create migration table
+```bash
+npx sequelize-cli db:migrate
+```
+Seeders data
+```bash
+npx sequelize-cli db:seed:all
+```
+Running server
+```bash
+npm run dev
+```
+
+
