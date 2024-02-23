@@ -7,12 +7,11 @@ const logger = require("./config/logger");
 const routes = require("./routes");
 const app = express();
 
-// let corsOption = {
-//   origin: "http://localhost:8080",
-// };
+let corsOption = {
+  origin: "http://localhost:8080",
+};
 
-app.use(cors());
-// app.use(express.json());
+app.use(cors(corsOption));
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({

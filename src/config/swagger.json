@@ -9,7 +9,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "http://localhost:8080",
+  "host": "localhost:8080",
   "basePath": "/api",
   "tags": [
     {
@@ -106,6 +106,49 @@
         "responses": {
           "200": {
             "description": "Success return loan book"
+        }
+      }
+    }
+  },
+  "/members": {
+      "get": {
+        "tags": ["Member"],
+        "summary": "Get all data members",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Get Data members"
+        }
+      }
+    }
+  },
+  "/members/getBookByMember": {
+      "get": {
+        "tags": ["Member"],
+        "summary": "Get all data members on loan",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Get Data members on loan"
+        }
+      }
+    }
+  },
+  "/members/create": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "Create Member",
+          "parameters": [
+          {
+            "name": "member",
+            "in": "body",
+            "description": "body atribute : name, sex, address, phone"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success create member"
         }
       }
     }
