@@ -13,6 +13,8 @@ REST API Peminjaman Buku merupakan aplikasi backend yang menyediakan endpoint de
 ![Logo](https://raw.githubusercontent.com/hudaputrasantosa/rest-api-book-test/master/assets/docs_api.png)
 
 ## ✨ Endpoints
+Base URL : http://localhost/api
+
 | Method   | Url/Endpoint   | Action   |
 | ------------- | ------------- | -------- |
 | GET      | /books       | Get all data book |
